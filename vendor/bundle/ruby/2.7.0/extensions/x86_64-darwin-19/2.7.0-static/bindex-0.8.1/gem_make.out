@@ -1,0 +1,15 @@
+current directory: /Users/sakotoru/environment/sako_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/sakotoru/.rbenv/versions/2.7.0-preview1/bin/ruby -I /Users/sakotoru/.rbenv/versions/2.7.0-preview1/lib/ruby/2.7.0 -r ./siteconf20191206-24236-6jl1ja.rb extconf.rb
+creating Makefile
+
+current directory: /Users/sakotoru/environment/sako_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/sakotoru/environment/sako_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/sakotoru/environment/sako_app/vendor/bundle/ruby/2.7.0/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.bundle ./.gem.20191206-24236-f55k9l/skiptrace/internal
