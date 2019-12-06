@@ -1,15 +1,37 @@
-<% provide(:title, "Home") %>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= yield(:title) %> | sako_</title>
-  </head>
-  <body>
-    <h1>sako_app</h1>
-    <p>
-      This is the home page for the
-      sako_app
+<div class="jumbotron jumbotron-fluid jumbotron-extend">
+  <div class="container">
+    <h1>今日はどこへ届ける？</h1>
+    <p>あなたが効率よく配達するためのお手伝い</p>
+    <p>sako app(仮)は、現在位置と配達状況をシェアし、</p>
+    <p>より多くの配達依頼がある場所をお伝えします。</p>
+    <%= link_to "はじめる", '/signup', class: "btn btn-info btn-lg" %>
+  </div>
+</div>
 
-    </p>
-  </body>
-</html>
+<div class="container">
+  <div class="container discription-container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="discription-img-container">
+          <%# <%= image_tag '#', class: 'discription-img' %> %>
+        </div>
+        <h2>動画時間を入力</h2>
+        <p>動画の視聴時間を入力することで動画に使った時間を可視化することが可能です。</p>
+      </div>
+      <div class="col-md-4">
+        <div class="discription-img-container">
+          <%# <%= image_tag '#', class: 'discription-img' %> %>
+        </div>
+        <h2>学習時間も娯楽時間も</h2>
+        <p>動画は単に暇つぶしのためだけのものではありません。学習など有効的に活用し記録することで有意義と感じる心理的効果が期待できます。</p>
+      </div>
+      <div class="col-md-4">
+        <div class="discription-img-container">
+          <%# <%= image_tag 'memo.png', class: 'discription-img' %> %>
+        </div>
+        <h2>日記にも使える</h2>
+        <p>ログ機能によりどんな動画を観たのかどんな感想を持ったのかを記録することも可能です。動画との人生を豊かにする日記となるでしょう。</p>
+      </div>
+    </div>
+  </div>
+</div>
