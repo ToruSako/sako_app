@@ -33,6 +33,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -60,6 +61,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+  #factory_bot操作用メソッド をinclude
+  config.include FactoryBot::Syntax::Methods
+
   config.before(:each) do |example|
     if example.metadata[:type] == :system
       driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]

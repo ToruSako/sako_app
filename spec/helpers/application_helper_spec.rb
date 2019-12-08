@@ -20,7 +20,7 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context "page_title is not empty" do
       before do
-        assign(:title, 'hoge')
+        assign(:title, 'sako_app')
       end
 
       it "returns title and application name where contains symbol" do
