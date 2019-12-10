@@ -10,8 +10,8 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
-
  */
+ // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
 $lantern-light-white: #f5f5f6;
@@ -23,19 +23,48 @@ $lantern-yellow: #bdb319;
 $lantern-blue: #0071bc;
 $lantern-dark-blue: #0c2e64;
 
-// body {
-//   background-color: $lantern-black;
-// }
+body {
+  background-color: pink;
+}
+
+// max-width = 768px
+@media (max-width: 768px) {
+  .nav-item-extend {
+    margin-top: 0.6rem;
+  }
+}
+
+// button
+.btn-extend {
+  width: 8.5rem;
+}
 
 // header
 
 .navbar-extend {
   margin-bottom: 0;
-  background-color: #ヘッダーの色がなぜか変わらない;
+  background-color: $lantern-black;
   opacity: 0.9;
   ul li a button {
     padding: 0.375rem 1.5rem;
   }
+}
+
+.nav-item-extend {
+  > a:not(.btn-extend) {
+    // text-decoration: none;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+  > a {
+    margin-left: 1rem;
+    float: right;
+  }
+}
+
+.nav-link {
+  color: $lantern-dark-white;
 }
 
 .logo-img:hover {
@@ -49,10 +78,14 @@ $lantern-dark-blue: #0c2e64;
   }
 }
 
+.container {
+  margin-top: 7rem;
+}
+
 // jumbotron
 
 .jumbotron-extend {
-  // background-image: url(<%= asset_path "shinkai_01.jpg" %>);
+   background: url("kintore.jpg") no-repeat center center;
   background-size: cover;
   background-repeat: no-repeat;
   .container {
@@ -60,7 +93,7 @@ $lantern-dark-blue: #0c2e64;
     h1,
     p {
       margin-bottom: 0.75rem;
-      // color: $lantern-light-white;
+      color: $lantern-light-white;
     }
     h1 {
       margin-bottom: 1.5rem;
