@@ -16,7 +16,7 @@ config.generators.system_tests        = false
 config.generators.stylesheets         = false
 config.generators.javascripts         = false
 config.generators.helper              = false
-config.generators.helper_specs        = false
+#config.generators.helper_specs        = false
 config.generators.view_specs          = false
 config.generators do |g|
 
