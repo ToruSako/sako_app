@@ -43,8 +43,9 @@ RSpec.describe "Logins", type: :system do
       expect(page).not_to have_selector '.btn-login-extend'
     end
   end
-end 
+end
 
+ #ログアウトのテスト
  describe "Logout" do
     it "contains login button without logout button" do
       visit login_path
