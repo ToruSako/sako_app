@@ -7,6 +7,13 @@ FactoryBot.define do
     password_digest { User.digest("password") }
   end
 
+  factory :other_user, class: User do
+    name { "Sterling Archer" }
+    email { "duchess@example.gov" }
+    password { "foobar" }
+    password_confirmation { "foobar" }
+  end
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
