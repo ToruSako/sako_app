@@ -131,7 +131,7 @@ RSpec.describe User, type: :model do
     describe "ユーザーモデルメソッドのテスト" do
       describe "authenticated?" do
         it "remember_digestがnilなら即座に認証を終了させること" do
-          expect(user.authenticated?(' ')).to be_falsey
+          expect(user.authenticated?(:remember,'')).to be_falsey
         end
       end
     end

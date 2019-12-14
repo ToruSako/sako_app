@@ -21,9 +21,7 @@ RSpec.describe "UsersSignups", type: :system do
     fill_in 'パスワード', with: 'password'
     fill_in 'パスワード（再入力）', with: 'password'
     click_on '新規ユーザ作成'
-    # follow_redirect!
-    #作成したユーザのページにリダイレクトするか
-    expect(current_path).to eq user_path(1)
+    expect(current_path).to eq root_path
     expect(page).not_to have_selector '#error_explanation'
   end
 end

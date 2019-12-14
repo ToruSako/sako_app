@@ -1,0 +1,4 @@
+<%= @user.name %>様
+
+マッスあっぷへようこそ。下記のリンクをクリックして、本登録を完了させてください。
+<%=edit_account_activation_url(@user.activation_token, email: @user.email) %>

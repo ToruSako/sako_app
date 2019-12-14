@@ -37,9 +37,9 @@ end
     it "有効な値を渡した場合、ユーザの数が増えること" do
       get signup_path
       expect { post_valid_information }.to change(User, :count).by(1)
-      expect(is_logged_in?).to be_truthy
+      expect(is_logged_in?).to be_falsey
       follow_redirect!
-      expect(request.fullpath).to eq '/users/1'
+      expect(request.fullpath).to eq '/'
     end
   end
 end
