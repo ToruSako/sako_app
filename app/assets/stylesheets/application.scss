@@ -34,6 +34,27 @@ body {
   }
 }
 
+// max-width = 767px
+@media (max-width: 767px) {
+  .nav-item-extend {
+    margin-top: 0.6rem;
+  }
+
+  .log-title {
+    padding: 0;
+  }
+
+  .log-list {
+    border-left: 1px solid $lantern-dark-white;
+  }
+}
+
+@media (min-width: 768px) {
+  .log-timestamp-inline {
+    visibility: hidden;
+  }
+}
+
 // button
 .btn-extend {
   width: 8.5rem;
@@ -163,6 +184,83 @@ body {
 .form-submit {
   width: 100%;
   margin-top: 1rem;
+}
+
+// logs
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+.log-title {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.log-list {
+  margin-bottom: 1rem;
+
+  .log-timestamp {
+    color: gray;
+  }
+
+  .log-timestamp-block {
+    text-align: center;
+    padding-bottom: 2rem;
+    margin-top: 0.1rem;
+    border-right: 1px solid $lantern-dark-white;
+  }
+
+  .col-log-memos {
+    padding: 0 1rem 0 1rem;
+
+    .log-time-and-edit {
+      .log-time {
+        font-size: 1.2rem;
+        color: $lantern-yellow;
+      }
+
+      .log-timestamp-inline {
+        text-align: right;
+        margin-top: 0.1rem;
+        padding: 0;
+      }
+
+      .log-edit {
+        text-align: right;
+        margin-top: 0.1rem;
+
+        .log-edit-image {
+          width: 1rem;
+        }
+      }
+    }
+
+    .log-memo {
+    }
+
+    .log-picture {
+    }
+  }
+}
+
+// paginate
+.pagination {
+  margin-top: 1.6rem;
+
+  .page-item {
+    .page-link {
+      border: 1px solid $lantern-light-white;
+      background-color: $lantern-light-white;
+      color: $lantern-blue;
+    }
+  }
+
+  .page-item.active .page-link {
+    background-color: $lantern-blue;
+    border-color: $lantern-blue;
+    color: $lantern-light-white;
+  }
 }
 
 #error_explanation {

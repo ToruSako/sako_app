@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
     name { "Michael Example" }
-    email { "michael@example.com" }
+    sequence(:email) { |n| "michael_#{n}@example.com" }
     password { "password" }
     password_confirmation { "password" }
     activated { true }
@@ -9,7 +9,7 @@ FactoryBot.define do
 
   factory :other_user, class: User do
     name { "Sterling Archer" }
-    email { "duchess@example.gov" }
+    sequence(:email) { |n| "duchess_#{n}@example.gov" }
     password { "foobar" }
     password_confirmation { "foobar" }
     activated { true }
@@ -17,7 +17,7 @@ FactoryBot.define do
 
   factory :no_activation_user, class: User do
     name { "No Activation" }
-    email { "no@activation.co.jp" }
+    sequence(:email) { |n| "no_#{n}@activation.co.jp" }
     password { "foobar" }
     password_confirmation { "foobar" }
     activated { false }

@@ -1,0 +1,5 @@
+<% if @picture.image.attached? %>
+  <% @comment.images.each do |image| %>
+  <%= image_tag image %> <br>
+  <% end %>
+<% end %>
