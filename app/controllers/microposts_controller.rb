@@ -9,6 +9,7 @@ class MicropostsController < ApplicationController
     @microposts = @user.microposts.page(params[:page]).per(10)
 
     if @micropost.save
+      flash[:success] = "投稿しました"
       redirect_to current_user
     else
       render 'users/show'
@@ -38,6 +39,12 @@ class MicropostsController < ApplicationController
     @micropost.destroy
     flash[:success] = "ログが削除されました"
     redirect_to current_user
+  end
+
+  def index
+    @user = User.all
+    @microposts = Micropost.all.order(created_at: :desc)
+    @microposts = Micropost.page(params[:page]).per(20)
   end
 
   private

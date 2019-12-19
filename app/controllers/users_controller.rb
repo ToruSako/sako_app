@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.page(params[:page]).per(10)
+    @allmicroposts = Micropost.all.order(created_at: :desc)
+    @allmicroposts = Micropost.page(params[:page]).per(10)
   end
 
   def new
