@@ -1,9 +1,10 @@
 User.create!(
-  name: "Example User",
-  email: "example@railstutorial.org",
+  name: "Toru Sako",
+  email: "majikade.zou@gmail.com",
   password: "foobar",
   password_confirmation: "foobar",
-  activated: true
+  activated: true,
+  admin: true
 )
 
 5.times do |n|

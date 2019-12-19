@@ -1,6 +1,15 @@
 <% provide(:title, @user.name) %>
 <div class="container show-container">
   <div class="row">
+    <section class="user_info">
+     <% if current_user.admin? && !current_user?(@user) %>
+     | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "本当に削除しますか？" } %>
+     <% end %>
+      <h1>
+        <%= @user.name %>
+      </h1>
+    </section>
     <div class="col bg-primary">
       <%= render 'layouts/micropost_form' %>
     </div>
