@@ -2,6 +2,9 @@
 <div class="container show-container">
   <div class="row">
     <section class="user_info">
+     <% if current_user?(@user) %>
+      <div class=""><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-info" %></div>
+     <% end %>
      <% if current_user.admin? && !current_user?(@user) %>
      | <%= link_to "delete", @user, method: :delete,
                                   data: { confirm: "本当に削除しますか？" } %>
@@ -9,20 +12,17 @@
       <h1>
         <%= @user.name %>
       </h1>
+       <% if @user.picture.attached? %>
+       <p class="trim-image-to-circle">
+         <%= image_tag @user.resize_picture %>
+       </p>
+       <% end %>
+      <p>プロフィール : <%= @user.profile %></p>
     </section>
-    <div class="col bg-primary">
-      <%= render 'layouts/micropost_form' %>
-    </div>
-    <div class="col bg-secondary">
-      figure
-    </div>
   </div>
   <div class="row">
     <div class="col-logs">
       <%= render 'layouts/log' %>
-    </div>
-    <div class="col-index">
-      <%= render 'microposts/index' %>
     </div>
   </div>
 </div>

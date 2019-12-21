@@ -1,8 +1,22 @@
+<% if logged_in? %>
+ <div class="">
+   <aside class="col-md-4">
+      <section class="micropost_form">
+        <%= render 'layouts/micropost_form' %>
+      </section>
+    </aside>
+    <div class="">
+      <div class="col-index">
+        <%= render 'microposts/index' %>
+      </div>
+    </div>
+  </div>
+<% else %>
 <div class="jumbotron jumbotron-fluid jumbotron-extend">
   <div class="container">
-    <h1>マッスあっぷ！」</h1>
+    <h1>Musclove</h1>
     <p>筋トレがもっと楽しくなる</p>
-    <p>マッスあっぷ！（仮）は、君が輝けるステージを提供します</p>
+    <p>マッスラブは、君が輝けるステージを提供します</p>
     <br>
     <p>流した汗は裏切らない</p>
     <%= link_to "はじめる", '/signup', class: "btn btn-info btn-lg" %>
@@ -36,3 +50,4 @@
     </div>
   </div>
 </div>
+<% end %>

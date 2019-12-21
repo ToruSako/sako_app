@@ -1,4 +1,5 @@
 <h1 class="log-title col-2">新着</h1>
+  <% if @allmicroposts.any? %>
   <div class="container">
     <ol class="microposts">
     <% @allmicroposts.each do |allmicropost| %>
@@ -30,3 +31,6 @@
     </ol>
   </div>
   <%= paginate @allmicroposts %>
+  <% else %>
+    <span>まだ投稿がありません</span>
+  <% end %>
