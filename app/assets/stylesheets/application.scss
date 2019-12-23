@@ -116,6 +116,12 @@ body {
     background-position: left top;  /* 横長画像の左上を基準に表示 */
 }
 
+// show
+
+.user-profile {
+  border: solid 1px black;
+}
+
 // jumbotron
 
 .jumbotron-extend {
@@ -273,6 +279,16 @@ ol {
     border-color: $lantern-blue;
     color: $lantern-light-white;
   }
+}
+
+// follow
+
+.follow_button {
+  padding-bottom: 1rem;
+}
+
+.follow_users {
+  border: solid 10px;
 }
 
 #error_explanation {

@@ -1,0 +1,14 @@
+<% @user.followings.each do |user| %>
+<table>
+<tr>
+  <div calss="follow_users">
+  <% if user.picture.attached? %>
+    <div class="log-picture"><%= image_tag user.resize_picture %></div>
+  <% end %>
+  <td>  <%= user.name %> </td>
+  <td><%= link_to '詳細', user_path(user) %></td>
+  </div>
+</tr>
+
+</table>
+<% end %>
