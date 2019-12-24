@@ -10,9 +10,10 @@ class MicropostsController < ApplicationController
 
     if @micropost.save
       flash[:success] = "投稿しました"
-      redirect_to current_user
+      redirect_to root_url
     else
-      render 'users/show'
+      flash[:warning] = "投稿に失敗しました"
+      redirect_to root_url
     end
   end
 

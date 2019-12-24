@@ -33,7 +33,6 @@ class User < ApplicationRecord
   end
 
 
-
   def resize_picture
     return self.picture.variant(resize: '200x200').processed
   end
