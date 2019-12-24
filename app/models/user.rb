@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :follow
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
   attr_accessor :remember_token, :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -32,6 +34,9 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+  def already_liked?(micropost)
+    self.likes.exists?(micropost_id: micropost.id)
+  end
 
   def resize_picture
     return self.picture.variant(resize: '200x200').processed

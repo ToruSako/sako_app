@@ -30,7 +30,7 @@ class MicropostsController < ApplicationController
     @micropost.update_attributes(micropost_params)
     if @micropost.save
       flash[:success] = "編集が完了しました"
-      redirect_to current_user
+      redirect_to root_url
     else
       render 'microposts/edit'
     end
@@ -42,8 +42,12 @@ class MicropostsController < ApplicationController
     redirect_to current_user
   end
 
+  def show
+    @micropost = Micropost.find(params[:id])
+    @like = Like.new
+  end
+
   def index
-    @user = User.all
     @microposts = Micropost.all.order(created_at: :desc)
     @microposts = Micropost.page(params[:page]).per(20)
   end

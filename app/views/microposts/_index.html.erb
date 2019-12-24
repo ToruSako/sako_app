@@ -18,13 +18,14 @@
                   <span class="log-edit col-2"><%= link_to image_tag('edit.png', class: "log-edit-image"), edit_micropost_path(micropost_all) %></span>
                 </div>
               </div>
-              <% if micropost_all.memo.present? %>
-                <div class="log-memo"><%= micropost_all.memo %></div>
-              <% end %>
               <% if micropost_all.picture.attached? %>
                 <div class="log-picture"><%= image_tag micropost_all.resize_picture %></div>
               <% end %>
+              <p><a href="/microposts/<%= micropost_all.id %>"><%= micropost_all.memo %></a></p>
             </span>
+            <p>
+              <%= link_to image_tag('good.png', class: "microposts-good-image") %>(<%= micropost_all.liked_users.count %>)
+            </p>
           </span>
         </li>
     <% end %>
