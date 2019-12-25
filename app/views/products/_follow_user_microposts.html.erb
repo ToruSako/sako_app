@@ -1,33 +1,37 @@
 <h1 class="log-title col-2">フォロー</h1>
  <% if @follower_microposts.any? %>
-  <div class="container">
-    <ol class="microposts">
-    <% @follower_microposts.each do |follower_micropost| %>
-        <li id ="micropost-<%= follower_micropost.id %>">
-          <span class="row follower-microposts-list">
-            <span class="col-2 log-user-name">
-              <span class="follow-user-name"><%= link_to(follower_micropost.user.name,"/users/#{follower_micropost.user_id}") %></span>
-            </span>
-            <span class="col-2 log-timestamp d-none d-md-inline-block log-timestamp-block">
-              <span class="log-timestamp"><%= time_ago_in_words(follower_micropost.created_at) %>前</span>
-            </span>
-            <span class="col-md-10 col-log-memos">
-              <div class="log-time-and-edit">
-                <div class="row">
-                  <span class="col-7 log-timestamp log-timestamp-inline"><%= time_ago_in_words(follower_micropost.created_at) %>前</span>
-                </div>
-              </div>
-                <div class="log-memo"><%= follower_micropost.memo %></div>
-              <% if follower_micropost.picture.attached? %>
-                <div class="log-picture"><%= image_tag follower_micropost.resize_picture %></div>
-              <% end %>
-            </span>
-          </span>
-        </li>
-    <% end %>
-    </ol>
-  </div>
+ <div class="container">
+   <ol class="microposts">
+   <% @follower_microposts.each do |follower_micropost| %>
+       <li id ="micropost-<%= follower_micropost.id %>">
+         <span class="row log-list">
+           <span class="col-2 log-user-name">
+             <span class="log-user-name"><%= link_to(follower_micropost.user.name,"/users/#{follower_micropost.user_id}") %></span>
+           </span>
+           <span class="col-2 log-timestamp d-none d-md-inline-block log-timestamp-block">
+             <span class="log-timestamp"><%= time_ago_in_words(follower_micropost.created_at) %>前</span>
+           </span>
+           <span class="col-md-10 col-log-memos">
+             <div class="log-time-and-edit">
+               <div class="row">
+                 <span class="col-7 log-timestamp log-timestamp-inline"><%= time_ago_in_words(follower_micropost.created_at) %>前</span>
+                 <span class="log-edit col-2"><%= link_to image_tag('edit.png', class: "log-edit-image"), edit_micropost_path(follower_micropost) %></span>
+               </div>
+             </div>
+             <% if follower_micropost.picture.attached? %>
+               <div class="log-picture"><%= image_tag follower_micropost.resize_picture %></div>
+             <% end %>
+             <p><a href="/microposts/<%= follower_micropost.id %>"><%= simple_format(follower_micropost.memo) %></a></p>
+           </span>
+           <p>
+             <%= link_to image_tag('good.png', class: "microposts-good-image") %>(<%= follower_micropost.liked_users.count %>)
+           </p>
+         </span>
+       </li>
+   <% end %>
+   </ol>
+ </div>
   <%= paginate @follower_microposts %>
   <% else %>
-    <span>ユーザーをフォローしていません</span>
+    <span>投稿がありません</span>
   <% end %>

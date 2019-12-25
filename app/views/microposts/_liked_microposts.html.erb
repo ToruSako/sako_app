@@ -1,0 +1,36 @@
+<div class="contents_like">
+<h1 class="log-title col-2">いいねした投稿</h1>
+     <div class="container">
+       <ol class="microposts">
+         <% @likes.each do |like| %>
+           <% micropost = Micropost.find_by(id: like.micropost_id) %>
+           <li id ="micropost-<%= micropost.id %>">
+             <span class="row log-list">
+               <span class="col-2 log-user-name">
+                 <span class="log-user-name"><%= link_to(micropost.user.name,"/users/#{micropost.user_id}") %></span>
+               </span>
+               <span class="col-2 log-timestamp d-none d-md-inline-block log-timestamp-block">
+                 <span class="log-timestamp"><%= time_ago_in_words(micropost.created_at) %>前</span>
+               </span>
+               <span class="col-md-10 col-log-memos">
+                 <div class="log-time-and-edit">
+                   <div class="row">
+                     <span class="col-7 log-timestamp log-timestamp-inline"><%= time_ago_in_words(micropost.created_at) %>前</span>
+                     <span class="log-edit col-2"><%= link_to image_tag('edit.png', class: "log-edit-image"), edit_micropost_path(micropost) %></span>
+                   </div>
+                 </div>
+                 <% if micropost.picture.attached? %>
+                   <div class="log-picture"><%= image_tag micropost.resize_picture %></div>
+                 <% end %>
+                 <p><a href="/microposts/<%= micropost.id %>"><%= simple_format(micropost.memo) %></a></p>
+               </span>
+               <p>
+                 <%= link_to image_tag('good.png', class: "microposts-good-image") %>(<%= micropost.liked_users.count %>)
+               </p>
+             </span>
+           </li>
+          <% end %>
+       </ol>
+     </div>
+      <%= paginate @likes %>
+　</div>

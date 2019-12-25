@@ -1,19 +1,37 @@
 <% if logged_in? %>
- <div class="">
-   <aside class="col-md-4">
-      <section class="micropost_form">
-        <%= render 'layouts/micropost_form' %>
-      </section>
-    </aside>
-    <div class="">
-      <div class="col-index">
-        <%= render 'microposts/index' %>
-      </div>
-      <div class="followers_microposts">
-        <%= render 'products/follow_user_microposts' %>
-      </div>
-    </div>
+<div>
+  <section class="micropost_form">
+    <%= render 'layouts/micropost_form' %>
+  </section>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active" role="presentation">
+    <a class="nav-link" aria-controls="tab_a" data-toggle="tab" href="#tab_a" role="tab">新着</a>
+  </li>
+  <li role="presentation">
+    <a class="nav-link" aria-controls="tab_b" data-toggle="tab" href="#tab_b" role="tab">フォロー</a>
+  </li>
+  <li role="presentation">
+    <a class="nav-link" aria-controls="tab_c" data-toggle="tab" href="#tab_c" role="tab">いいね</a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="tab_a" role="tabpanel">
+    <p>
+      <%= render 'microposts/index' %>
+    </p>
   </div>
+  <div class="tab-pane" id="tab_b" role="tabpanel">
+    <p>
+      <%= render 'products/follow_user_microposts' %>
+    </p>
+  </div>
+  <div class="tab-pane" id="tab_c" role="tabpanel">
+    <p>
+      <%= render 'microposts/liked_microposts' %>
+    </p>
+  </div>
+</div>
+</div>
 <% else %>
 <div class="jumbotron jumbotron-fluid jumbotron-extend">
   <div class="container">
