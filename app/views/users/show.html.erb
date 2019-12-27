@@ -4,7 +4,7 @@
     <section class="user_info">
        <div class="user-name user-info-top">
      <% if current_user?(@user) %>
-      <div class=""><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-info" %></div>
+      <div class=""><%= link_to "プロフィール編集", edit_user_path(current_user), class: "btn btn-lg" %></div>
      <% end %>
      <% if current_user.admin? && !current_user?(@user) %>
      | <%= link_to "delete", @user, method: :delete,
@@ -27,10 +27,9 @@
         </div>
        </div>
        <% if @user.profile? %>
+       <p class="profile-info"><i class="fas fa-user-alt"></i>プロフィール<br></p>
        <div class="user-profile">
-       <p>プロフィール<br>
           <%= simple_format@user.profile %>
-       </p>
       <% else %>
       <p>まだ自己紹介を書いていません</p>
       </div>

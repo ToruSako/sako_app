@@ -1,4 +1,4 @@
-<h1 class="log-title col-2">フォロー</h1>
+<h1 class="micropost-title log-title">フォロー</h1>
  <% if @follower_microposts.any? %>
  <div class="container">
    <ol class="microposts">
@@ -11,20 +11,24 @@
            <span class="col-2 log-timestamp d-none d-md-inline-block log-timestamp-block">
              <span class="log-timestamp"><%= time_ago_in_words(follower_micropost.created_at) %>前</span>
            </span>
+           <span>
+             <span><p><a href="/microposts/<%= follower_micropost.id %>" class="detail">詳細を見る</a></p></span>
+           </span>
            <span class="col-md-10 col-log-memos">
              <div class="log-time-and-edit">
                <div class="row">
                  <span class="col-7 log-timestamp log-timestamp-inline"><%= time_ago_in_words(follower_micropost.created_at) %>前</span>
-                 <span class="log-edit col-2"><%= link_to image_tag('edit.png', class: "log-edit-image"), edit_micropost_path(follower_micropost) %></span>
                </div>
+             </div>
+             <div class="memo">
+               <p><%= simple_format(follower_micropost.memo) %></p>
              </div>
              <% if follower_micropost.picture.attached? %>
                <div class="log-picture"><%= image_tag follower_micropost.resize_picture %></div>
              <% end %>
-             <p><a href="/microposts/<%= follower_micropost.id %>"><%= simple_format(follower_micropost.memo) %></a></p>
            </span>
            <p>
-             <%= link_to image_tag('good.png', class: "microposts-good-image") %>(<%= follower_micropost.liked_users.count %>)
+             <%= image_tag('good_orange.png', class: "microposts-good-image", :size =>'48x48') %>(<%= follower_micropost.liked_users.count %>)
            </p>
          </span>
        </li>

@@ -1,8 +1,7 @@
 <% provide(:title, 'プロフィール編集') %>
 <div class="container edit-container">
   <div class="edit-title">
-    <%= image_tag 'profile.png', class: 'edit-img', size: 100 %>
-    <h1 class="form-title form-title-edit">プロフィール編集</h1>
+    <h1 class="form-title form-title-edit"><i class="fas fa-user-edit"></i>プロフィール編集</h1>
   </div>
   <%= form_with(model: @user, url: user_path(@user), local: true, multipart: true) do |form| %>
   <div class="card-deck">
@@ -19,7 +18,7 @@
             <%= form.text_area :profile, class: "class: 'form-control'", size: "50x8" %>
           </div>
           <div class="form-group">
-            <%= form.submit "変更", class: 'btn btn-info btn-lg form-submit' %>
+            <%= form.submit "変更", class: 'btn btn-lg form-submit' %>
           </div>
         </div>
       </section>
@@ -44,7 +43,7 @@
             <%= form.password_field :password_confirmation, class: 'form-control', placeholder: "パスワード（再入力）" %>
           </div>
           <div class="form-group">
-            <%= form.submit "変更", class: 'btn btn-info btn-lg form-submit' %>
+            <%= form.submit "変更", class: 'btn btn-lg form-submit' %>
           </div>
         </div>
       </section>

@@ -1,4 +1,4 @@
-<h1 class="log-title col-2">投稿一覧</h1>
+<h1 class="log-title">投稿一覧</h1>
 <% if @user.microposts.any? %>
   <div class="container">
     <ol class="microposts">
@@ -8,18 +8,20 @@
             <span class="col-2 log-timestamp d-none d-md-inline-block log-timestamp-block">
               <span class="log-timestamp"><%= time_ago_in_words(micropost.created_at) %>前</span>
             </span>
+            <span><p><a href="/microposts/<%= micropost.id %>" class="detail">詳細を見る</a></p></span>
+            <span class="log-edit col-2"><%= link_to image_tag('edit.png', class: "log-edit-image", :size => '16x16'), edit_micropost_path(micropost) %></span>
             <span class="col-md-10 col-log-memos">
               <div class="log-time-and-edit">
                 <div class="row">
                   <span class="col-7 log-timestamp log-timestamp-inline"><%= time_ago_in_words(micropost.created_at) %>前</span>
-                  <span class="log-edit col-2"><%= link_to image_tag('edit.png', class: "log-edit-image"), edit_micropost_path(micropost) %></span>
                 </div>
               </div>
-                <div class="log-memo"><%= micropost.memo %></div>
+                <div class="memo"><%= simple_format(micropost.memo) %></div>
               <% if micropost.picture.attached? %>
                 <div class="log-picture"><%= image_tag micropost.resize_picture %></div>
               <% end %>
             </span>
+            <%= image_tag('good_orange.png', class: "microposts-good-image", :size =>'48x48') %>(<%= micropost.liked_users.count %>)
           </span>
         </li>
     <% end %>

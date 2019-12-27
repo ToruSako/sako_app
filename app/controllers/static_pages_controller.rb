@@ -9,7 +9,7 @@ class StaticPagesController < ApplicationController
     @follow_users = @user ? @user.followings : []
     @follower_microposts = @microposts_all.where(user_id: @follow_users).order("created_at DESC").page(params[:page]).per(10)
 
-    @likes = Like.where(user_id: @user.id).page(params[:page]).per(10)
+    @likes = @user ? Like.where(user_id: @user.id).page(params[:page]).per(10) :[]
   end
 
   def help
