@@ -66,16 +66,14 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'tranquil-springs-33214.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
+  config.action_mailer.default_url_options = { host: "18.177.251.97" }
   ActionMailer::Base.smtp_settings = {
-    :address          => 'smtp.sendgrid.net',
+    :address          => 'smtp.gmail.com',
     :port             => '587',
     :authentication   =>  :plain,
-    :user_name        => ENV['SENDGRID_USERNAME'],
-    :password         => ENV['SENDGRID_PASSWORD'],
-    :domain           => 'heroku.com',
-    :enable_starttls_auto => true
+    :user_name        => 'majikade.zou@gmail.com',
+    :password         => 'akmairbjgiqvpeoh',
+    :enable_starttls_auto => 'true'
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

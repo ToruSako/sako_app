@@ -32,12 +32,20 @@ Rails.application.configure do
   config.active_storage.service = :amazon
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :test
   host = 'http://localhost:3000'
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   config.action_mailer.perform_caching = false
-
+  config.action_mailer.raise_delivery_errors = true
+    config.action_mailer.delivery_method = :smtp
+    ActionMailer::Base.smtp_settings = {
+      :address          => 'smtp.gmail.com',
+      :port             => '587',
+      :authentication   =>  :plain,
+      :user_name        => 'majikade.zou@gmail.com',
+      :password         => 'akmairbjgiqvpeoh',
+      :enable_starttls_auto => 'true'
+    }
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
