@@ -14,15 +14,6 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-$lantern-light-white: #f5f5f6;
-$lantern-dark-white: #cdced1;
-$lantern-black: #050c17;
-$lantern-red: #b1046b;
-$lantern-violet: #640c41;
-$lantern-yellow: #bdb319;
-$lantern-blue: #0071bc;
-$lantern-dark-blue: #0c2e64;
-
 body {
   background-color: pink;
 }
@@ -45,7 +36,7 @@ body {
   }
 
   .log-list {
-    border-left: 1px solid $lantern-dark-white;
+    border-left: 1px solid;
   }
 }
 
@@ -64,7 +55,7 @@ body {
 
 .navbar-extend {
   margin-bottom: 0;
-  background-color: $lantern-black;
+  background-color: black;
   opacity: 0.9;
   ul li a button {
     padding: 0.375rem 1.5rem;
@@ -85,7 +76,7 @@ body {
 }
 
 .nav-link {
-  color: $lantern-dark-white;
+  color: white;
 }
 
 .logo-img:hover {
@@ -104,6 +95,12 @@ body {
 }
 
 // micropost
+
+.micropost-show {
+  border-top: 1px solid #ffff;
+  border-bottom: 1px solid #ffff;
+  padding-bottom: 1rem;
+}
 
 .micropost-title {
 width: 20rem;
@@ -256,7 +253,7 @@ border-radius: 10px;
     h1,
     p {
       margin-bottom: 0.75rem;
-      color: $lantern-light-white;
+      color: white;
     }
     h1 {
       margin-bottom: 1.5rem;
@@ -356,7 +353,6 @@ ol {
     .log-time-and-edit {
       .log-time {
         font-size: 1.2rem;
-        color: $lantern-yellow;
       }
 
       .log-timestamp-inline {
@@ -390,16 +386,16 @@ ol {
 
   .page-item {
     .page-link {
-      border: 1px solid $lantern-light-white;
-      background-color: $lantern-light-white;
-      color: $lantern-blue;
+      border: 1px solid white;
+      background-color: white;
+      color: blue;
     }
   }
 
   .page-item.active .page-link {
-    background-color: $lantern-blue;
-    border-color: $lantern-blue;
-    color: $lantern-light-white;
+    background-color: blue;
+    border-color: blue;
+    color: white;
   }
 }
 

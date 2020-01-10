@@ -1,6 +1,26 @@
 <h1>投稿詳細ページ</h1>
-<h3><%= @micropost.memo %></h3>
-<h3>いいね件数: <%= @micropost.likes.count %></h3>
+<div class="micropost-show">
+<span class="col-2 log-user-name">
+  <span class="log-user-name"><%= link_to(@micropost.user.name,"/users/#{@micropost.user_id}") %></span>
+</span>
+<span class="col-2 log-timestamp d-none d-md-inline-block log-timestamp-block">
+  <span class="log-timestamp"><%= time_ago_in_words(@micropost.created_at) %>前</span>
+</span>
+<span class="col-md-10 col-log-memos">
+  <div class="log-time-and-edit">
+    <div class="row">
+      <span class="col-7 log-timestamp log-timestamp-inline"><%= time_ago_in_words(@micropost.created_at) %>前</span>
+    </div>
+  </div>
+  <div class="memo">
+    <p><%= simple_format(@micropost.memo) %></p>
+  </div>
+  <% if @micropost.picture.attached? %>
+    <div class="log-picture"><%= image_tag @micropost.resize_picture %></div>
+  <% end %>
+</span>
+<p>いいね件数: <%= @micropost.likes.count %></p>
+</div>
 <% if current_user.already_liked?(@micropost) %>
   <%= button_to 'いいねを取り消す', micropost_like_path(@micropost), method: :delete %>
 <% else %>
