@@ -27,8 +27,8 @@ RSpec.describe "UsersEdits", type: :request do
     }
   end
 
-  context "valid" do
-    it "is valid edit information" do
+  context "正しい情報を入力した時" do
+    it "更新に成功すること" do
       log_in_as(user)
       get edit_user_path(user)
       patch_valid_information
@@ -36,7 +36,7 @@ RSpec.describe "UsersEdits", type: :request do
       follow_redirect!
       expect(request.fullpath).to eq '/users/1/edit'
     end
-    it "正しい情報でログインした時、編集ページに戻ること" do
+    it "ログイン前にいたページに戻ること" do
       get edit_user_path(user)
       follow_redirect!
       expect(request.fullpath).to eq '/login'
@@ -46,14 +46,13 @@ RSpec.describe "UsersEdits", type: :request do
 end
 
   describe "GET /users/:id/edit" do
-    context "無効な時" do
-      it "is invalid because of having not log in" do
+      it "ログインしていない時,ログインページにリダイレクトすること" do
         get edit_user_path(user)
         follow_redirect!
         expect(request.fullpath).to eq '/login'
       end
 
-      it "別のユーザでログインした時に、無効になること" do
+      it "別のユーザでログインした時に無効になること" do
         log_in_as(other_user)
         get edit_user_path(user)
         follow_redirect!
@@ -69,13 +68,5 @@ end
        expect(flash[:danger]).to be_truthy
        expect(request.fullpath).to eq '/users/1'
       end
-      it "does not redirect update because of having log in as wrong user" do
-       log_in_as(other_user)
-       get edit_user_path(user)
-       patch_valid_information
-       follow_redirect!
-       expect(request.fullpath).to eq '/'
-      end
     end
-  end
 end

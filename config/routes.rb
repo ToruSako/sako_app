@@ -23,4 +23,5 @@ Rails.application.routes.draw do
  end
    resources :relationships, only: [:create, :destroy]
    get  '/index',   to: 'microposts#index'
+   get 'microposts/id', to: 'microposts#show'
 end

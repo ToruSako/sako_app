@@ -42,12 +42,25 @@ RSpec.describe "Logins", type: :system do
       expect(page).to have_selector '.btn-logout-extend'
       expect(page).not_to have_selector '.btn-login-extend'
     end
+
+    it "ログインした時にルートページのレイアウトが変更されるか" do
+        visit root_path
+        expect(page).to have_link 'はじめる', href: signup_path
+        visit login_path
+        fill_in 'メールアドレス', with: user.email
+        fill_in 'パスワード', with: 'password'
+        find(".form-submit").click
+        expect(current_path).to eq user_path(1)
+        visit root_path
+        expect(page).to have_selector '.micropost_form'
+        expect(page).to have_selector '.nav-tabs'
+        expect(page).not_to have_link 'はじめる', href: signup_path
+    end
   end
 end
 
- #ログアウトのテスト
  describe "Logout" do
-    it "contains login button without logout button" do
+    it "ログアウトした時に、ログアウトボタンが消えていること" do
       visit login_path
       fill_in 'メールアドレス', with: user.email
       fill_in 'パスワード', with: 'password'

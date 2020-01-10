@@ -4,17 +4,9 @@ RSpec.describe "PasswordResets", type: :request do
 
   let(:user) { create(:user) }
 
- #ここだけが通らない
   describe "POST /password_resets" do
-  #   it "is invalid email address" do
-  #     get new_password_reset_path
-  #     expect(request.fullpath).to eq '/password_resets/new'
-  #     post password_reset_path, params: { password_reset: { email: ""} }
-  #     expect(flash[:danger]).to be_truthy
-  #     expect(request.fullpath).to eq '/password_resets'
-  # end
 
-  it "is valid email address" do
+  it "正しい情報を入力した時、メールが送信されること" do
     get new_password_reset_path
     expect(request.fullpath).to eq '/password_resets/new'
     post password_resets_path, params: { password_reset: { email: user.email } }
@@ -26,7 +18,8 @@ RSpec.describe "PasswordResets", type: :request do
 end
 
   describe "GET /password_resets/:id/edit" do
-      it "is invalid email address" do
+     context "メールアドレスが空の時"
+      it "失敗すること" do
         post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         get edit_password_reset_path(user.reset_token, email: "")
@@ -35,8 +28,8 @@ end
         expect(request.fullpath).to eq '/password_resets/new'
       end
 
-
-      it "is invalid user" do
+     context "無効なユーザの場合"
+      it "失敗すること" do
         post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         user.toggle!(:activated)
@@ -46,8 +39,8 @@ end
         expect(request.fullpath).to eq '/password_resets/new'
         user.toggle!(:activated)
       end
-
-      it "is invalid token" do
+     context "無効なトークンの時"
+      it "失敗すること" do
         post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         get edit_password_reset_path('wrong token', email: user.email)
@@ -55,8 +48,8 @@ end
         follow_redirect!
         expect(request.fullpath).to eq '/password_resets/new'
       end
-
-      it "is valid information" do
+     context "正しい情報を受け取った時"
+      it "成功すること" do
         post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         get edit_password_reset_path(user.reset_token, email: user.email)
@@ -66,7 +59,8 @@ end
     end
 
     describe "PATCH /password_resets/:id" do
-      it "is invalid password" do
+     context "無効なパスワードを受け取った時"
+      it "失敗すること" do
         post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         get edit_password_reset_path(user.reset_token, email: user.email)
@@ -79,8 +73,8 @@ end
         }
         expect(request.fullpath).to eq "/password_resets/#{user.reset_token}"
       end
-
-      it "is empty password" do
+     context "空のパスワードを受け取った"
+      it "失敗すること" do
       post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         get edit_password_reset_path(user.reset_token, email: user.email)
@@ -93,8 +87,8 @@ end
         }
         expect(request.fullpath).to eq "/password_resets/#{user.reset_token}"
       end
-
-      it "has expired token" do
+     context "期限ぎれのトークンを受け取った場合"
+      it "失敗すること" do
         post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         user.update_attribute(:reset_sent_at, 3.hours.ago)
@@ -110,8 +104,8 @@ end
         follow_redirect!
         expect(request.fullpath).to eq '/password_resets/new'
       end
-
-      it "is valid information" do
+     context "正しい情報を受け取った時"
+      it "成功すること" do
         post password_resets_path, params: { password_reset: { email: user.email } }
         user = assigns(:user)
         get edit_password_reset_path(user.reset_token, email: user.email)

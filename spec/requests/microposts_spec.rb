@@ -22,36 +22,37 @@ RSpec.describe "Microposts", type: :request do
   end
 
   describe "POST /microposts" do
-    it "does not add a micropost when not logged in" do
+    it "ログインしていない時投稿できないこと" do
       expect{ post_valid_information }.not_to change(Micropost, :count)
       follow_redirect!
       expect(request.fullpath).to eq '/login'
     end
-
-    it "does not add a micropost when the form has no information" do
+   context "内容が空の時"
+    it "投稿に失敗すること" do
       log_in_as(user)
-      get user_path(user)
+      get root_path
       expect{ post_invalid_information }.not_to change(Micropost, :count)
     end
-
-    it "succeeds to add a micropost" do
+   context "正しい情報を入力した時"
+    it "投稿に成功すること" do
       log_in_as(user)
-      get user_path(user)
-      expect(request.fullpath).to eq '/users/1'
+      get root_path
+      expect(request.fullpath).to eq '/'
       expect{ post_valid_information }.to change(Micropost, :count).by(1)
       follow_redirect!
-      expect(request.fullpath).to eq '/users/1'
+      expect(request.fullpath).to eq '/'
     end
   end
 
   describe "DELETE /micropost" do
-    it "does not destroy a micropost when not logged in" do
+   context "ログインしていない時"
+    it "投稿が削除できないこと" do
       delete micropost_path(1)
       follow_redirect!
       expect(request.fullpath).to eq '/login'
     end
-
-    it "does not destroy a micropost when other users logged in" do
+   context "別のユーザとしてログインしている時"
+    it "投稿を削除できないこと" do
       log_in_as(user)
       get user_path(user)
       post_valid_information
@@ -64,8 +65,8 @@ RSpec.describe "Microposts", type: :request do
       expect{ delete micropost_path(1) }.not_to change(Micropost, :count)
       expect{ delete micropost_path(2) }.to change(Micropost, :count).by(-1)
     end
-
-    it "succeeds to destroy a micropost" do
+   context "正しいユーザとしてログインした時"
+    it "投稿の削除に成功すること" do
       log_in_as(user)
       get user_path(user)
       expect{ post_valid_information }.to change(Micropost, :count).by(1)
@@ -78,9 +79,9 @@ RSpec.describe "Microposts", type: :request do
   end
 
   describe "GET /microposts/:id/edit" do
-    it "does not edit a micropost when not logged in" do
+   context "ログインしていない時"
+    it "投稿の編集に失敗すること" do
       log_in_as(user)
-      get user_path(user)
       post_valid_information
       follow_redirect!
       delete logout_path
@@ -89,10 +90,9 @@ RSpec.describe "Microposts", type: :request do
       follow_redirect!
       expect(request.fullpath).to eq '/login'
     end
-
-    it "does not edit a micropost when other users logged in" do
+   context "別のユーザとしてログインした時"
+    it "投稿に失敗すること" do
       log_in_as(user)
-      get user_path(user)
       post_valid_information
       follow_redirect!
       delete logout_path
@@ -103,7 +103,7 @@ RSpec.describe "Microposts", type: :request do
       expect(request.fullpath).to eq '/'
     end
 
-    it "does not edit a micropost when the form has no information" do
+    it "内容を空にして、編集をした時、失敗すること" do
       log_in_as(user)
       get user_path(user)
       post_valid_information
@@ -114,7 +114,7 @@ RSpec.describe "Microposts", type: :request do
       expect(request.fullpath).to eq '/microposts/1'
     end
 
-    it "succeeds to edit a micropost" do
+    it "投稿の編集に成功すること" do
       log_in_as(user)
       get user_path(user)
       post_valid_information
@@ -123,7 +123,7 @@ RSpec.describe "Microposts", type: :request do
       expect(request.fullpath).to eq '/microposts/1/edit'
       patch_valid_information
       follow_redirect!
-      expect(request.fullpath).to eq '/users/1'
+      expect(request.fullpath).to eq '/'
     end
   end
 end
