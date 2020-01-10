@@ -1,24 +1,43 @@
-# README
+# MuscLove
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![Badge Status](http://ec2-18-177-251-97.ap-northeast-1.compute.amazonaws.com/)
 
-Things you may want to cover:
 
-* Ruby version
+## Description
 
-* System dependencies
+This app is for those who like muscle training.
+You can share practice menus and achievements.
+You can also use it as your own memo.
 
-* Configuration
 
-* Database creation
+## Features
 
-* Database initialization
+- Article posting function
+- User follow function
+- like function
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## Requirement
 
-* Deployment instructions
+- Requirement
+- Requirement
+- Requirement
 
-* ...
+## Usage
+
+1. Account registration
+2. Post Article
+3. Follow users & Like
+
+
+## Installation
+
+    $ git clone https://github.com/ToruSako/sako_app.git
+
+## Anything Else
+
+This app was created as a portfolio
+
+## Author
+
+ToruSako
