@@ -197,13 +197,19 @@ color: #545454;
 
 // users/show
 
+.user-info-container {
+  padding-bottom: 2rem;
+  border-bottom: solid 1px;
+}
+
 .profile-info {
+  border-bottom: solid 1px;
   position: relative;
-background: #ffd98a;
-padding: 2px 5px 2px 25px;
-font-size: 20px;
-color: #474747;
-border-radius: 10px;
+  background: #ffd98a;
+  padding: 2px 5px 2px 25px;
+  font-size: 20px;
+  color: #474747;
+  border-radius: 10px;
 }
 
 .user-profile {
@@ -246,7 +252,7 @@ border-radius: 10px;
 // jumbotron
 
 .jumbotron-extend {
-   background: url("kintore.jpg") no-repeat center center;
+   background: url("flat_training") no-repeat ;
   background-size: cover;
   background-repeat: no-repeat;
   .container {
@@ -279,6 +285,7 @@ border-radius: 10px;
   margin-bottom: 1.8rem;
   }
   p {
+    text-align: center;
     font-size: 1rem;
     line-height: 2.1rem;
   }
@@ -388,13 +395,13 @@ ol {
     .page-link {
       border: 1px solid white;
       background-color: white;
-      color: blue;
+      color: #FD9535;
     }
   }
 
   .page-item.active .page-link {
-    background-color: blue;
-    border-color: blue;
+    background-color: #FD9535;
+    border-color: #FD9535;
     color: white;
   }
 }

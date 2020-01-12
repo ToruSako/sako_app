@@ -16,6 +16,14 @@
           <%= form.password_field :password, class: 'form-control', placeholder: "パスワード" %>
         </div>
 
+        <div class="test-account">
+          <p>テストログイン用</p>
+          <ul>
+            <li>メールアドレス: musclove.test@gmail.com</li>
+            <li>パスワード: password</li>
+          </ul>
+        </div>
+
         <div class="form-group form-check">
           <%= form.check_box :remember_me, class: 'form-check-input' %>
           <%= form.label :remember_me, 'ログイン状態を保存', class: 'form-check-label' %>

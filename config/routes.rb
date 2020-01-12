@@ -22,6 +22,6 @@ Rails.application.routes.draw do
    resources :likes, only: [:create, :destroy]
  end
    resources :relationships, only: [:create, :destroy]
-   get  '/index',   to: 'microposts#index'
-   get 'microposts/id', to: 'microposts#show'
+   get  'microposts/index',   to: 'microposts#index'
+   #get 'microposts/id', to: 'microposts#show'
 end
