@@ -21,7 +21,8 @@
 
 ## 使用技術一覧
 
-- インフラ: aws ec2
+- フレームワーク: Ruby, Ruby on Rails
+- インフラ: aws ec2, unicorn, nginx
 - データベース: MySQL
 - 画像アップロード: Active Storage, Amazon S3
 - テスト: RSpec
