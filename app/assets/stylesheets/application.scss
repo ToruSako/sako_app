@@ -14,9 +14,9 @@
  // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
 
-body {
-  background-color: pink;
-}
+// body {
+//   background-color: pink;
+// }
 
 // max-width = 768px
 @media (max-width: 768px) {
@@ -97,8 +97,8 @@ body {
 // micropost
 
 .micropost-show {
-  border-top: 1px solid #ffff;
-  border-bottom: 1px solid #ffff;
+  border-top: 1px solid #6c757d;
+  border-bottom: 1px solid #6c757d;
   padding-bottom: 1rem;
 }
 

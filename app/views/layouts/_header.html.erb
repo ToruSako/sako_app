@@ -13,6 +13,7 @@
       <div id="menu" class="collapse navbar-collapse">
         <ul class="navbar-nav navbar-nav-extend ml-auto">
         <% if logged_in? %>
+          <li class="nav-item nav-item-extend"><%= link_to "ホーム", root_url, class: "btn btn-info btn-md btn-extend btn-home" %></li>
           <li class="nav-item nav-item-extend"><%= link_to "プロフィール", current_user, class: "btn btn-info btn-md btn-extend btn-profile" %></li>
           <li class="nav-item nav-item-extend"><%= link_to "ログアウト", logout_path, method: :delete, class: "btn btn-danger btn-md btn-extend btn-logout-extend" %></li>
         <% else %>

@@ -1,34 +1,30 @@
 # MuscLove
 
-![Badge Status](http://ec2-18-177-251-97.ap-northeast-1.compute.amazonaws.com/)
+## 概要
 
+筋トレが好きな人どうしが繋がるSNSです。
+筋トレメニューを記録したり、写真を共有したりできます。
+一人では続かないトレーニングでも誰かと一緒なら頑張れる、という方におすすめです。
 
-## Description
+## 機能一覧
 
-This app is for those who like muscle training.
-You can share practice menus and achievements.
-You can also use it as your own memo.
+- サインインアップ　サインイン機能
+- 記事投稿機能
+- 記事一覧、詳細機能
+- ユーザフォロー機能
+- いいね機能
+- アカウント認証機能
+- 管理ユーザ機能
+- ページネーション機能
+- 画像アップロード機能
+- 単体テスト 統合テスト
 
+## 使用技術一覧
 
-## Features
-
-- Article posting function
-- User follow function
-- like function
-
-
-## Requirement
-
-- Requirement
-- Requirement
-- Requirement
-
-## Usage
-
-1. Account registration
-2. Post Article
-3. Follow users & Like
-
+- インフラ: aws ec2
+- データベース: MySQL
+- 画像アップロード: Active Storage, Amazon S3
+- テスト: RSpec
 
 ## Installation
 
